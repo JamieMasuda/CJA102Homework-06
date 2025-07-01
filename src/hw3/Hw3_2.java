@@ -8,14 +8,14 @@ public class Hw3_2{
 	
 	// 設定亂數
 	public static int SetRandom(){
-		//         轉換為整數       0 ~ 10 共 11 個整數  最小為 0, + 0 可省略
-		int random = (int) (Math.random() * 11);
+		//         轉換為整數       0 ~ 100 共 101 個整數  最小為 0, + 0 可省略
+		int random = (int) (Math.random() * 101);
 		return random;
 	}
 	
 	// 猜錯時給提示(但猜到沒別的好猜時會有額外提示XD)
 	public static void Hint(int guess, int min, int max){
-		System.out.println("猜錯囉, 在 " + (min + 1) + " ~ " + (max - 1) + " 之內(含), 再輸入一次~");
+		System.out.println("猜錯囉, 在 " + (min + 1) + " ~ " + (max - 1) + " 之內 (皆包含), 再輸入一次~");
 		if ((min + 1) == (max - 1)) {
 			System.out.println("(但也沒別的數字好猜了啦...XD)");
 		}
@@ -30,7 +30,7 @@ public class Hw3_2{
 				return guess;
 			}
 			if(! input.hasNextInt()) {
-				System.out.println("不要亂輸入!! 你是覺得索引值是從1開始的那類人是不是!! 再輸入一次!!!" );
+				System.out.println("不要亂輸入!! 你是覺得索引值是從 1 開始的那類人是不是!! 再輸入一次!!!" );
 				continue;
 			}
 		}
@@ -39,16 +39,16 @@ public class Hw3_2{
 //	===========================  我是分隔線   ==============================================
 	
 	public static void main(String[] args) {
-		int max = 11, min = -1, count = 1, haiYa = 0; // 亂猜就會嗨呀一次XD	
+		int max = 101, min = -1, count = 1, haiYa = 0; // 亂猜就會嗨呀一次XD	
 		
 		int random = SetRandom();
-		System.out.println("請輸入一個 0 ~ 10 之間的整數: ");
+		System.out.println("請輸入一個 0 ~ 100 之間的整數: ");
 		
 		int guess = Input();
 
 		while (guess != random) {
 			if (guess <= min || guess >= max) {
-				System.out.println("不要輸入範圍外的數字!! 你是覺得索引值是從1開始的那類人是不是!! 是 " + (min + 1) + " ~ " + (max - 1) + " 之內 (皆包含) 的數字!!!");
+				System.out.println("不要輸入範圍外的數字!! 你是覺得索引值是從 1 開始的那類人是不是!! 是 " + (min + 1) + " ~ " + (max - 1) + " 之內 (皆包含) 的數字!!!");
 				++haiYa;
 			} else if (guess > random){
 				max = guess;
